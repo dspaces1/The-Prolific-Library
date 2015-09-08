@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BBA28D14CF40CE10153B51F /* Pods_The_Prolific_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4154278C257CDB934FA76B3 /* Pods_The_Prolific_Library.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F127EC0B1B9F7DE500782846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC0A1B9F7DE500782846 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F181EE891B9F7859005DA9B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F181EE881B9F7859005DA9B2 /* AppDelegate.swift */; };
 		F181EE8E1B9F7859005DA9B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F181EE8C1B9F7859005DA9B2 /* Main.storyboard */; };
 		F181EE901B9F7859005DA9B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F181EE8F1B9F7859005DA9B2 /* Assets.xcassets */; };
@@ -14,6 +16,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		318FDBAB3C372232828C25EA /* Pods-The-Prolific-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The-Prolific-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-The-Prolific-Library/Pods-The-Prolific-Library.release.xcconfig"; sourceTree = "<group>"; };
+		7456C99E4CC2CFDE4279DFE8 /* Pods-The-Prolific-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The-Prolific-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The-Prolific-Library/Pods-The-Prolific-Library.debug.xcconfig"; sourceTree = "<group>"; };
+		D4154278C257CDB934FA76B3 /* Pods_The_Prolific_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Prolific_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F127EC0A1B9F7DE500782846 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F181EE851B9F7859005DA9B2 /* The-Prolific-Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Prolific-Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F181EE881B9F7859005DA9B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F181EE8D1B9F7859005DA9B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -27,17 +33,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BBA28D14CF40CE10153B51F /* Pods_The_Prolific_Library.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E88F8C59D40A5CC13D4D746 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4154278C257CDB934FA76B3 /* Pods_The_Prolific_Library.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D7078DE2A9B306F8AC38B82A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7456C99E4CC2CFDE4279DFE8 /* Pods-The-Prolific-Library.debug.xcconfig */,
+				318FDBAB3C372232828C25EA /* Pods-The-Prolific-Library.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F127EC0C1B9F846B00782846 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F127EC0D1B9F847600782846 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			path = ViewControllers/Models;
+			sourceTree = "<group>";
+		};
+		F127EC0E1B9F848300782846 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F181EE7C1B9F7859005DA9B2 = {
 			isa = PBXGroup;
 			children = (
 				F181EE871B9F7859005DA9B2 /* The-Prolific-Library */,
 				F181EE861B9F7859005DA9B2 /* Products */,
+				D7078DE2A9B306F8AC38B82A /* Pods */,
+				6E88F8C59D40A5CC13D4D746 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,11 +100,15 @@
 		F181EE871B9F7859005DA9B2 /* The-Prolific-Library */ = {
 			isa = PBXGroup;
 			children = (
+				F127EC0E1B9F848300782846 /* Helpers */,
+				F127EC0D1B9F847600782846 /* Models */,
+				F127EC0C1B9F846B00782846 /* ViewControllers */,
 				F181EE881B9F7859005DA9B2 /* AppDelegate.swift */,
 				F181EE8C1B9F7859005DA9B2 /* Main.storyboard */,
 				F181EE8F1B9F7859005DA9B2 /* Assets.xcassets */,
 				F181EE911B9F7859005DA9B2 /* LaunchScreen.storyboard */,
 				F181EE941B9F7859005DA9B2 /* Info.plist */,
+				F127EC0A1B9F7DE500782846 /* ViewController.swift */,
 			);
 			path = "The-Prolific-Library";
 			sourceTree = "<group>";
@@ -68,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F181EE971B9F7859005DA9B2 /* Build configuration list for PBXNativeTarget "The-Prolific-Library" */;
 			buildPhases = (
+				5B265D632CE8EC5D36A57C6E /* Check Pods Manifest.lock */,
 				F181EE811B9F7859005DA9B2 /* Sources */,
 				F181EE821B9F7859005DA9B2 /* Frameworks */,
 				F181EE831B9F7859005DA9B2 /* Resources */,
+				5D5453F477ADCEDE640A4017 /* Embed Pods Frameworks */,
+				0A87D7E309C48E3B67B41000 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,11 +181,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A87D7E309C48E3B67B41000 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The-Prolific-Library/Pods-The-Prolific-Library-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B265D632CE8EC5D36A57C6E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5D5453F477ADCEDE640A4017 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-The-Prolific-Library/Pods-The-Prolific-Library-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F181EE811B9F7859005DA9B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F127EC0B1B9F7DE500782846 /* ViewController.swift in Sources */,
 				F181EE891B9F7859005DA9B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +346,7 @@
 		};
 		F181EE981B9F7859005DA9B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7456C99E4CC2CFDE4279DFE8 /* Pods-The-Prolific-Library.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "The-Prolific-Library/Info.plist";
@@ -253,6 +358,7 @@
 		};
 		F181EE991B9F7859005DA9B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 318FDBAB3C372232828C25EA /* Pods-The-Prolific-Library.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "The-Prolific-Library/Info.plist";
@@ -281,6 +387,7 @@
 				F181EE991B9F7859005DA9B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
