@@ -10,9 +10,11 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+typealias RestfulSuccessCallBack = (Bool) -> Void
+
 class Library {
     
-    private let serverLibraryUrl: String = "https://prolific-interview.herokuapp.co/55eef7425c65c90009e68721"
+    private let serverLibraryUrl: String = "https://prolific-interview.herokuapp.com/55eef7425c65c90009e68721"
     private let serverAllBooks: String = "/books"
     private let serverBook: String = "/books/"
     private let serverClearAllBooks: String = "/clean"
@@ -80,16 +82,14 @@ class Book: Library {
     }
 
     
-    func addBookToLibrary() {
+    func addBookToLibrary(completionBlock: RestfulSuccessCallBack) {
         Alamofire.request(.POST, serverLibraryUrl+serverBook, parameters: jsonDictionary, encoding: .JSON).response{
             request, response, data, error in
             
             if error == nil {
-                print(response)
-                print(JSON(data!))
+                completionBlock(true)
             } else {
-                print(response?.statusCode)
-                print(error.debugDescription)
+                completionBlock(false)
             }
         }
     }

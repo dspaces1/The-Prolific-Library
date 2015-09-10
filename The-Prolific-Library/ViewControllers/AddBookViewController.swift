@@ -38,7 +38,7 @@ class AddBookViewController: UIViewController {
     ///Checks if all textfields are empty
     func areAllTextFieldsEmpty() -> Bool {
         
-        if errorChecking.isStringEmpty(bookTitleTextField.text) && errorChecking.isStringEmpty(authorNameTextField.text) && errorChecking.isStringEmpty(publisherNameTextField.text) && errorChecking.isStringEmpty(categoriesTextField.text){
+        if errorHandlingHelper.isStringEmpty(bookTitleTextField.text) && errorHandlingHelper.isStringEmpty(authorNameTextField.text) && errorHandlingHelper.isStringEmpty(publisherNameTextField.text) && errorHandlingHelper.isStringEmpty(categoriesTextField.text){
             return true
         } else {
             return false
@@ -74,7 +74,7 @@ class AddBookViewController: UIViewController {
     /// Check required fields
     func isBookTitleOrAuthorFieldEmtpy() -> Bool {
         
-        if errorChecking.isStringEmpty(bookTitleTextField.text) || errorChecking.isStringEmpty(authorNameTextField.text) {
+        if errorHandlingHelper.isStringEmpty(bookTitleTextField.text) || errorHandlingHelper.isStringEmpty(authorNameTextField.text) {
             return true
         } else {
             return false
@@ -95,22 +95,33 @@ class AddBookViewController: UIViewController {
     func sendBookInformationToServer() {
         
         let newBook = Book(bookTitle: bookTitleTextField.text!, authorName: authorNameTextField.text!, publisher: publisherNameTextField.text!, categories: categoriesTextField.text!)
-        newBook.addBookToLibrary()
+        
+        newBook.addBookToLibrary { (success) -> Void in
+            if success {
+                self.displaySuccessPOSTAlert()
+            } else {
+                errorHandlingHelper.couldNotConnectToServerAlert(self, titleMessage: alertMessage.errorTitle, bodyMessage: alertMessage.couldNotConnectToServerMessage)
+            }
+        }
 
     }
     
-    // MARK: Setup
+    func displaySuccessPOSTAlert() {
+        
+        let alertView = UIAlertController(title: alertMessage.successTitle, message: customSuccessMessageBody(), preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        
+        presentViewController(alertView, animated: true, completion: nil)
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    func customSuccessMessageBody() -> String {
+        return "'\(bookTitleTextField.text!)' has been added to the Prolific Library."
     }
+    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
 
