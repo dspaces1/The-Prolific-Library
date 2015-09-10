@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		9BBA28D14CF40CE10153B51F /* Pods_The_Prolific_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4154278C257CDB934FA76B3 /* Pods_The_Prolific_Library.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F127EC0B1B9F7DE500782846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC0A1B9F7DE500782846 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC101BA0846D00782846 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC0F1BA0846D00782846 /* LibraryViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC121BA08DBF00782846 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC111BA08DBF00782846 /* AddBookViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC141BA096A200782846 /* Errors_Alerts_Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC131BA096A200782846 /* Errors_Alerts_Helper.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC161BA1268200782846 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC151BA1268200782846 /* Library.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC181BA1268D00782846 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC171BA1268D00782846 /* Book.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC1A1BA1F63A00782846 /* ProgressIndicatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		F181EE891B9F7859005DA9B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F181EE881B9F7859005DA9B2 /* AppDelegate.swift */; };
 		F181EE8E1B9F7859005DA9B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F181EE8C1B9F7859005DA9B2 /* Main.storyboard */; };
 		F181EE901B9F7859005DA9B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F181EE8F1B9F7859005DA9B2 /* Assets.xcassets */; };
@@ -20,6 +26,12 @@
 		7456C99E4CC2CFDE4279DFE8 /* Pods-The-Prolific-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The-Prolific-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The-Prolific-Library/Pods-The-Prolific-Library.debug.xcconfig"; sourceTree = "<group>"; };
 		D4154278C257CDB934FA76B3 /* Pods_The_Prolific_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Prolific_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F127EC0A1B9F7DE500782846 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F127EC0F1BA0846D00782846 /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		F127EC111BA08DBF00782846 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
+		F127EC131BA096A200782846 /* Errors_Alerts_Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors_Alerts_Helper.swift; sourceTree = "<group>"; };
+		F127EC151BA1268200782846 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "The-Prolific-Library/Helpers/Library.swift"; sourceTree = SOURCE_ROOT; };
+		F127EC171BA1268D00782846 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Book.swift; path = "The-Prolific-Library/Helpers/Book.swift"; sourceTree = SOURCE_ROOT; };
+		F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorHelper.swift; sourceTree = "<group>"; };
 		F181EE851B9F7859005DA9B2 /* The-Prolific-Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Prolific-Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F181EE881B9F7859005DA9B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F181EE8D1B9F7859005DA9B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +72,8 @@
 		F127EC0C1B9F846B00782846 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F127EC0F1BA0846D00782846 /* LibraryViewController.swift */,
+				F127EC111BA08DBF00782846 /* AddBookViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -67,6 +81,8 @@
 		F127EC0D1B9F847600782846 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F127EC151BA1268200782846 /* Library.swift */,
+				F127EC171BA1268D00782846 /* Book.swift */,
 			);
 			name = Models;
 			path = ViewControllers/Models;
@@ -75,6 +91,8 @@
 		F127EC0E1B9F848300782846 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F127EC131BA096A200782846 /* Errors_Alerts_Helper.swift */,
+				F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -235,7 +253,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F127EC0B1B9F7DE500782846 /* ViewController.swift in Sources */,
+				F127EC121BA08DBF00782846 /* AddBookViewController.swift in Sources */,
+				F127EC1A1BA1F63A00782846 /* ProgressIndicatorHelper.swift in Sources */,
+				F127EC181BA1268D00782846 /* Book.swift in Sources */,
+				F127EC141BA096A200782846 /* Errors_Alerts_Helper.swift in Sources */,
+				F127EC101BA0846D00782846 /* LibraryViewController.swift in Sources */,
 				F181EE891B9F7859005DA9B2 /* AppDelegate.swift in Sources */,
+				F127EC161BA1268200782846 /* Library.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
