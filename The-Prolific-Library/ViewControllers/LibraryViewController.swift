@@ -11,8 +11,11 @@ import UIKit
 class LibraryViewController: UIViewController {
 
     
-    // MARK: Class Methods
-
+    // MARK: - Instance Properties
+    
+    let library: Library = Library()
+    
+    // MARK: - Instance Methods
     
     @IBAction func displayAddNewBookView(sender: AnyObject) {
         
@@ -22,11 +25,64 @@ class LibraryViewController: UIViewController {
         
     }
     
+    
+    @IBAction func deleteEntireLibrary(sender: AnyObject) {
+        displayAreYouSureAlert()
+    }
+    
+    func displayAreYouSureAlert() {
+        
+        let alertView = UIAlertController(title: alertMessage.warningTitleMessage, message: alertMessage.deleteEntireLibraryWarning, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.yesString, style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            self.disableUIandDeleteLibrary()
+        }))
+        alertView.addAction(UIAlertAction(title: alertMessage.noString, style: UIAlertActionStyle.Default, handler: nil))
+        
+        presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    func disableUIandDeleteLibrary() {
+        
+        ProgressHelper.startLoadAnimationAndDisableUI(self)
+        
+        library.deleteAllBooks { (success) -> Void in
+            if success {
+                print("Worked")
+            }else{
+                print("Did not work")
+            }
+        }
+        
+        ProgressHelper.reEnableUI(self)
+    }
+    
+    
+    func disableUIandGetEntireLibrary() {
+        
+        ProgressHelper.startLoadAnimationAndDisableUI(self)
+        
+        library.getAllBooks { (success, books) -> Void in
+            
+            if success {
+                print("success")
+                print(books.count)
+            } else {
+                print("failed")
+            }
+        }
+        
+        ProgressHelper.reEnableUI(self)
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        disableUIandGetEntireLibrary()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let library = Library()
-        library.getAllBooks()
         
     }
 

@@ -21,6 +21,8 @@ class alertMessage {
     
     static let warningTitleMessage: String = "Warning"
     static let areYouDoneTextBody: String = "Any information you entered will not be saved. Are you sure you want to exit?"
+    static let deleteEntireLibraryWarning: String = "Are you sure you would like to delete the entire Library? If you do, all book information will be destroyed."
+    
     static let yesString: String = "Yes"
     static let noString: String = "No"
 }

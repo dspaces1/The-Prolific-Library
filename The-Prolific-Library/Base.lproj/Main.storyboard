@@ -60,6 +60,11 @@
                                 <action selector="displayAddNewBookView:" destination="EzX-p0-lDn" id="hBs-Y0-tXT"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Mha-75-a6C">
+                            <connections>
+                                <action selector="deleteEntireLibrary:" destination="EzX-p0-lDn" id="4Rw-1b-GiH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="e6y-0h-sjf" kind="show" identifier="ShowBook" id="J8Q-N7-LMY"/>

@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 typealias RestfulSuccessCallBack = (Bool) -> Void
+typealias RestfulAllBooksCallBack = (Bool,[Book]) -> Void
 
 class Library {
     
@@ -20,21 +21,45 @@ class Library {
     private let serverClearAllBooks: String = "/clean"
     
     
-    func getAllBooks() {
+    func getAllBooks(completionBlock: RestfulAllBooksCallBack) {
         
         Alamofire.request(.GET, serverLibraryUrl+serverAllBooks).response{
             request, response, data, error in
-            print(request)
-            print(response)
-            let json = JSON(data: data!)
-            print(json)
-            //print(data)
-            print(error)
+            
+            if error == nil {
+    
+                let allBooks = self.convertJSONArrayToBookArray(JSON(data: data!))
+  
+                completionBlock(true,allBooks)
+            } else {
+                completionBlock(false,[])
+            }
+
         }
     }
     
-    func deleteAllBooks() {
+    private func convertJSONArrayToBookArray(json: JSON) -> [Book] {
         
+        var bookArray: [Book] = []
+        
+        for (_,subJson):(String, JSON) in json {
+            bookArray.append(Book(bookInformationJSON: subJson))
+        }
+        return bookArray
+    }
+    
+    func deleteAllBooks(completionBlock: RestfulSuccessCallBack) {
+        
+        Alamofire.request(.DELETE, serverLibraryUrl+serverClearAllBooks).response{
+            request, response, data, error in
+            print(response)
+            
+            if error == nil {
+                completionBlock(true)
+            }else {
+                completionBlock(false)
+            }
+        }
     }
     
     func getBookWithUrl() {
@@ -71,7 +96,6 @@ class Book: Library {
             "publisher" : publisher]
         super.init()
         convertJSONtoDictionary(jsonBookData)
-        print(jsonDictionary)
     }
     
     func convertJSONtoDictionary(json: JSON) {
