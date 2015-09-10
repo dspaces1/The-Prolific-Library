@@ -27,6 +27,7 @@ class LibraryViewController: UIViewController {
 
         let library = Library()
         library.getAllBooks()
+        
     }
 
     override func didReceiveMemoryWarning() {

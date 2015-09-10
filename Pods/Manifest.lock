@@ -1,9 +1,11 @@
 PODS:
   - Alamofire (2.0.0-beta.4)
+  - MBProgressHUD (0.9.1)
   - SwiftyJSON (2.2.1)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
+  - MBProgressHUD (~> 0.9.1)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`, branch `xcode7`)
 
 EXTERNAL SOURCES:
@@ -24,6 +26,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 20df1a4740a69d7cf6caf7fd06b8a8fc782f1ebd
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
 
 COCOAPODS: 0.38.2

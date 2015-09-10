@@ -17,8 +17,7 @@ class AddBookViewController: UIViewController {
     @IBOutlet weak var publisherNameTextField: UITextField!
     @IBOutlet weak var categoriesTextField: UITextField!
     
-    
-    
+
     // MARK: - Instance Methods
 
     
@@ -81,7 +80,7 @@ class AddBookViewController: UIViewController {
         }
     }
     
-    /// Display alert alert if any required fields are missing
+    /// Display alert if any required fields are missing
     func displayMissingFieldsAlert() {
         
         let alertView = UIAlertController(title: alertMessage.warningTitleMessage, message: alertMessage.missingBookOrAuthorFieldsMessage, preferredStyle: UIAlertControllerStyle.Alert)
@@ -91,10 +90,12 @@ class AddBookViewController: UIViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
-    
+    /// Grabs all fields and converts them into JSON. Then, takes JSON data and submits a POST request. Also, disable User UI and renables with a progress indicator.
     func sendBookInformationToServer() {
         
         let newBook = Book(bookTitle: bookTitleTextField.text!, authorName: authorNameTextField.text!, publisher: publisherNameTextField.text!, categories: categoriesTextField.text!)
+        
+        ProgressHelper.startLoadAnimationAndDisableUI(self)
         
         newBook.addBookToLibrary { (success) -> Void in
             if success {
@@ -102,10 +103,13 @@ class AddBookViewController: UIViewController {
             } else {
                 errorHandlingHelper.couldNotConnectToServerAlert(self, titleMessage: alertMessage.errorTitle, bodyMessage: alertMessage.couldNotConnectToServerMessage)
             }
+            
+            ProgressHelper.reEnableUI(self)
         }
 
     }
     
+    /// Displays alert if POST request was successful
     func displaySuccessPOSTAlert() {
         
         let alertView = UIAlertController(title: alertMessage.successTitle, message: customSuccessMessageBody(), preferredStyle: UIAlertControllerStyle.Alert)
@@ -117,12 +121,10 @@ class AddBookViewController: UIViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
+    ///Custom Message with book name for Success Alert
     func customSuccessMessageBody() -> String {
         return "'\(bookTitleTextField.text!)' has been added to the Prolific Library."
     }
     
-
-    
-
 
 }

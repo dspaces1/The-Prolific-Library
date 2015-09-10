@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'The-Prolific-Library' do
 
+pod 'MBProgressHUD', '~> 0.9.1'
 pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'xcode7'
 
