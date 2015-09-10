@@ -141,6 +141,9 @@
                                     <constraint firstAttribute="height" constant="33" id="0Tq-yb-gzI"/>
                                 </constraints>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitBookInfo:" destination="sCa-qy-ljg" eventType="touchUpInside" id="llu-6b-fwf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>

@@ -12,6 +12,7 @@ import UIKit
 class alertMessage {
     
     static let missingBookOrAuthorFieldsMessage: String = "Book Title and Author are required fields"
+    static let ok = "Ok"
     
     static let warningTitleMessage: String = "Warning"
     static let areYouDoneTextBody: String = "Any information you entered will not be saved. Are you sure you want to exit?"
@@ -32,7 +33,7 @@ class errorChecking {
     - returns: true if the string is emtpy
     */
     static func isStringEmpty( stringToCheck: String?) -> Bool  {
-        
+
         if let string = stringToCheck {
 
             let trimString = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -41,8 +42,6 @@ class errorChecking {
         
         return true
     }
-    
-    
     
 }
 

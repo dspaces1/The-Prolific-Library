@@ -10,7 +10,7 @@ import UIKit
 
 class AddBookViewController: UIViewController {
 
-    // MARK: Instance Properties
+    // MARK: - Instance Properties
     
     @IBOutlet weak var bookTitleTextField: UITextField!
     @IBOutlet weak var authorNameTextField: UITextField!
@@ -19,8 +19,11 @@ class AddBookViewController: UIViewController {
     
     
     
-    // MARK: Instance Methods
+    // MARK: - Instance Methods
 
+    
+    // MARK: Done Bar Button logic
+    
     ///If all textfields are empty dismiss ViewController. Otherwise warn the user.
     @IBAction func checkIfUserIsDone(sender: AnyObject) {
         
@@ -56,7 +59,44 @@ class AddBookViewController: UIViewController {
     }
 
     
+    // MARK: Sumbit Book Info logic
     
+    /// Send Book data to server if required fields are filled
+    @IBAction func submitBookInfo(sender: AnyObject) {
+        
+        if isBookTitleOrAuthorFieldEmtpy() {
+            displayMissingFieldsAlert()
+        } else {
+            print("Submit")
+        }
+    }
+    
+    /// Check required fields
+    func isBookTitleOrAuthorFieldEmtpy() -> Bool {
+        
+        if errorChecking.isStringEmpty(bookTitleTextField.text) || errorChecking.isStringEmpty(authorNameTextField.text) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    /// Display alert alert if any required fields are missing
+    func displayMissingFieldsAlert() {
+        
+        let alertView = UIAlertController(title: alertMessage.warningTitleMessage, message: alertMessage.missingBookOrAuthorFieldsMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: nil))
+        
+        presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    
+    func sendBookInformationToServer() {
+        
+    }
+    
+    // MARK: Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
