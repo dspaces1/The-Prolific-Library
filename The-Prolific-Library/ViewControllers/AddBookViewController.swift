@@ -67,7 +67,7 @@ class AddBookViewController: UIViewController {
         if isBookTitleOrAuthorFieldEmtpy() {
             displayMissingFieldsAlert()
         } else {
-            print("Submit")
+            sendBookInformationToServer()
         }
     }
     
@@ -94,6 +94,9 @@ class AddBookViewController: UIViewController {
     
     func sendBookInformationToServer() {
         
+        let newBook = Book(bookTitle: bookTitleTextField.text!, authorName: authorNameTextField.text!, publisher: publisherNameTextField.text!, categories: categoriesTextField.text!)
+        newBook.addBookToLibrary()
+
     }
     
     // MARK: Setup

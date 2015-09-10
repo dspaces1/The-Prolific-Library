@@ -12,9 +12,23 @@ import SwiftyJSON
 
 class Library {
     
+    private let serverLibraryUrl: String = "https://prolific-interview.herokuapp.co/55eef7425c65c90009e68721"
+    private let serverAllBooks: String = "/books"
+    private let serverBook: String = "/books/"
+    private let serverClearAllBooks: String = "/clean"
+    
     
     func getAllBooks() {
         
+        Alamofire.request(.GET, serverLibraryUrl+serverAllBooks).response{
+            request, response, data, error in
+            print(request)
+            print(response)
+            let json = JSON(data: data!)
+            print(json)
+            //print(data)
+            print(error)
+        }
     }
     
     func deleteAllBooks() {
@@ -36,15 +50,48 @@ class Book: Library {
     // MARK: - Instance Properties
     
     var jsonBookData:JSON!
+    var jsonDictionary = [String:String]()
     
+    // MARK: - Instance Methods
     
     init(bookInformationJSON:JSON ) {
         jsonBookData = bookInformationJSON
+        super.init()
+        convertJSONtoDictionary(jsonBookData)
     }
     
-
-    func addBookToLibrary() {
+    init(bookTitle: String, authorName: String, publisher: String, categories: String) {
         
+        jsonBookData = [
+            "author" : authorName,
+            "categories" : categories,
+            "title" : bookTitle,
+            "publisher" : publisher]
+        super.init()
+        convertJSONtoDictionary(jsonBookData)
+        print(jsonDictionary)
+    }
+    
+    func convertJSONtoDictionary(json: JSON) {
+        
+        for (key, object) in json {
+            jsonDictionary[String(key)] = object.stringValue
+        }
+    }
+
+    
+    func addBookToLibrary() {
+        Alamofire.request(.POST, serverLibraryUrl+serverBook, parameters: jsonDictionary, encoding: .JSON).response{
+            request, response, data, error in
+            
+            if error == nil {
+                print(response)
+                print(JSON(data!))
+            } else {
+                print(response?.statusCode)
+                print(error.debugDescription)
+            }
+        }
     }
     
     func editBookFromLibrary() {
