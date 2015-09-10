@@ -2,12 +2,21 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ktA-cg-o5T">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+            <string>HelveticaNeue</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Books-->
         <scene sceneID="Rbc-i7-M68">
             <objects>
-                <viewController id="EzX-p0-lDn" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EzX-p0-lDn" customClass="LibraryViewController" customModule="The_Prolific_Library" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Epp-x9-pe8"/>
                         <viewControllerLayoutGuide type="bottom" id="tJw-5b-Onz"/>
@@ -46,7 +55,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Books" id="VWc-iE-2kc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="h0S-Sj-0pV"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="h0S-Sj-0pV">
+                            <connections>
+                                <action selector="displayAddNewBookView:" destination="EzX-p0-lDn" id="hBs-Y0-tXT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="e6y-0h-sjf" kind="show" identifier="ShowBook" id="J8Q-N7-LMY"/>
@@ -56,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="1064" y="309"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Book View Controller-->
         <scene sceneID="HZe-ov-FFV">
             <objects>
-                <viewController storyboardIdentifier="AddBook" id="sCa-qy-ljg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddBook" id="sCa-qy-ljg" customClass="AddBookViewController" customModule="The_Prolific_Library" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E9v-OY-rTj"/>
                         <viewControllerLayoutGuide type="bottom" id="f9n-fx-DoQ"/>
@@ -76,19 +89,99 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Add Book" id="1Y3-Ds-7Pw">
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="n5t-1R-ODX"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="n5t-1R-ODX">
+                                            <connections>
+                                                <action selector="checkIfUserIsDone:" destination="sCa-qy-ljg" id="EQc-dl-2FT"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Book Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zJq-u3-97r">
+                                <rect key="frame" x="20" y="94" width="560" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sjQ-DP-GA9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Author" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pca-FO-Yex">
+                                <rect key="frame" x="20" y="139" width="560" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BpL-lo-6Kd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publisher" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BhT-eK-uFx">
+                                <rect key="frame" x="20" y="184" width="560" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CtG-Vq-zkN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categories" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8fb-ov-Giq">
+                                <rect key="frame" x="20" y="229" width="560" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EaO-1c-hSM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YO4-En-hfD">
+                                <rect key="frame" x="26" y="284" width="548" height="33"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.55238693500000002" green="0.97456713269999995" blue="0.84030997419999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="0Tq-yb-gzI"/>
+                                </constraints>
+                                <state key="normal" title="Submit"/>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pca-FO-Yex" firstAttribute="trailing" secondItem="3Ff-yL-NOu" secondAttribute="trailingMargin" id="0t1-ov-Xsr"/>
+                            <constraint firstItem="YO4-En-hfD" firstAttribute="top" secondItem="8fb-ov-Giq" secondAttribute="bottom" constant="25" id="7Tf-VF-e70"/>
+                            <constraint firstItem="f9n-fx-DoQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YO4-En-hfD" secondAttribute="bottom" id="AIr-V1-iNJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YO4-En-hfD" secondAttribute="trailing" constant="6" id="BPL-y4-smS"/>
                             <constraint firstItem="Yim-PS-nWV" firstAttribute="top" secondItem="3Ff-yL-NOu" secondAttribute="top" id="H0O-zF-bv7"/>
+                            <constraint firstItem="YO4-En-hfD" firstAttribute="top" secondItem="8fb-ov-Giq" secondAttribute="bottom" constant="40" id="ITQ-yQ-bpE"/>
+                            <constraint firstItem="BhT-eK-uFx" firstAttribute="leading" secondItem="3Ff-yL-NOu" secondAttribute="leadingMargin" id="Jnk-WP-MFv"/>
+                            <constraint firstItem="8fb-ov-Giq" firstAttribute="trailing" secondItem="3Ff-yL-NOu" secondAttribute="trailingMargin" id="MDg-07-yZT"/>
+                            <constraint firstItem="pca-FO-Yex" firstAttribute="leading" secondItem="3Ff-yL-NOu" secondAttribute="leadingMargin" id="QKi-H1-83B"/>
+                            <constraint firstItem="YO4-En-hfD" firstAttribute="leading" secondItem="3Ff-yL-NOu" secondAttribute="leadingMargin" constant="6" id="Qhd-C5-qDT"/>
+                            <constraint firstItem="BhT-eK-uFx" firstAttribute="top" secondItem="pca-FO-Yex" secondAttribute="bottom" constant="15" id="X4f-u6-t5U"/>
+                            <constraint firstItem="zJq-u3-97r" firstAttribute="leading" secondItem="3Ff-yL-NOu" secondAttribute="leadingMargin" id="Xw2-ra-104"/>
+                            <constraint firstItem="8fb-ov-Giq" firstAttribute="leading" secondItem="3Ff-yL-NOu" secondAttribute="leadingMargin" id="c4l-Eh-boK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YO4-En-hfD" secondAttribute="trailing" constant="6" id="dmz-IG-4oK"/>
+                            <constraint firstItem="8fb-ov-Giq" firstAttribute="top" secondItem="BhT-eK-uFx" secondAttribute="bottom" constant="15" id="hlK-Ip-jNd"/>
+                            <constraint firstItem="pca-FO-Yex" firstAttribute="top" secondItem="zJq-u3-97r" secondAttribute="bottom" constant="15" id="mUY-U5-1cM"/>
+                            <constraint firstItem="BhT-eK-uFx" firstAttribute="trailing" secondItem="3Ff-yL-NOu" secondAttribute="trailingMargin" id="mih-q2-E9b"/>
+                            <constraint firstItem="zJq-u3-97r" firstAttribute="trailing" secondItem="3Ff-yL-NOu" secondAttribute="trailingMargin" id="qxR-VN-aoO"/>
                             <constraint firstItem="Yim-PS-nWV" firstAttribute="leading" secondItem="3Ff-yL-NOu" secondAttribute="leading" id="uV4-Wz-6fx"/>
+                            <constraint firstItem="zJq-u3-97r" firstAttribute="top" secondItem="Yim-PS-nWV" secondAttribute="bottom" constant="30" id="vrz-l1-tFJ"/>
                             <constraint firstAttribute="trailing" secondItem="Yim-PS-nWV" secondAttribute="trailing" id="wck-S1-uM8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ITQ-yQ-bpE"/>
+                                <exclude reference="dmz-IG-4oK"/>
+                                <exclude reference="AIr-V1-iNJ"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="authorNameTextField" destination="pca-FO-Yex" id="Wrr-65-uJL"/>
+                        <outlet property="bookTitleTextField" destination="zJq-u3-97r" id="DJr-W8-9Ro"/>
+                        <outlet property="categoriesTextField" destination="8fb-ov-Giq" id="rHb-V9-bmH"/>
+                        <outlet property="publisherNameTextField" destination="BhT-eK-uFx" id="mn2-ur-MfT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUB-sf-UEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
