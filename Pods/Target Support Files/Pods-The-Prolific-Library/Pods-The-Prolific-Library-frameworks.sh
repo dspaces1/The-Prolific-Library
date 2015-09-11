@@ -53,11 +53,13 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-The-Prolific-Library/Alamofire.framework'
+  install_framework 'Pods-The-Prolific-Library/IQKeyboardManager.framework'
   install_framework 'Pods-The-Prolific-Library/MBProgressHUD.framework'
   install_framework 'Pods-The-Prolific-Library/SwiftyJSON.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-The-Prolific-Library/Alamofire.framework'
+  install_framework 'Pods-The-Prolific-Library/IQKeyboardManager.framework'
   install_framework 'Pods-The-Prolific-Library/MBProgressHUD.framework'
   install_framework 'Pods-The-Prolific-Library/SwiftyJSON.framework'
 fi

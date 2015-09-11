@@ -52,7 +52,6 @@ class Library {
         
         Alamofire.request(.DELETE, serverLibraryUrl+serverClearAllBooks).response{
             request, response, data, error in
-            print(response)
             
             if error == nil {
                 completionBlock(true)
@@ -66,8 +65,17 @@ class Library {
         
     }
     
-    func deleteBookWithURL() {
+    func deleteBookWithURL(selectedBookUrl: String,completionBlock: RestfulSuccessCallBack) {
         
+        Alamofire.request(.DELETE, serverLibraryUrl+selectedBookUrl).response{
+            request, response, data, error in
+            
+            if error == nil {
+                completionBlock(true)
+            } else {
+                completionBlock(false)
+            }
+        }
     }
     
 }

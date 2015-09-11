@@ -15,6 +15,7 @@ class alertMessage {
     static let couldNotConnectToServerMessage: String = "Could not connect to server. Please check network connection and try again."
     
     static let successTitle: String = "Success"
+    static let deletedEntireLibraryMessage: String = "Deleted entire library."
     
     static let missingBookOrAuthorFieldsMessage: String = "Book Title and Author are required fields"
     static let ok = "Ok"

@@ -15,6 +15,7 @@
 		F127EC161BA1268200782846 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC151BA1268200782846 /* Library.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC181BA1268D00782846 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC171BA1268D00782846 /* Book.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC1A1BA1F63A00782846 /* ProgressIndicatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC1D1BA33B2300782846 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC1C1BA33B2300782846 /* LibraryTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F181EE891B9F7859005DA9B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F181EE881B9F7859005DA9B2 /* AppDelegate.swift */; };
 		F181EE8E1B9F7859005DA9B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F181EE8C1B9F7859005DA9B2 /* Main.storyboard */; };
 		F181EE901B9F7859005DA9B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F181EE8F1B9F7859005DA9B2 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		F127EC151BA1268200782846 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "The-Prolific-Library/Helpers/Library.swift"; sourceTree = SOURCE_ROOT; };
 		F127EC171BA1268D00782846 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Book.swift; path = "The-Prolific-Library/Helpers/Book.swift"; sourceTree = SOURCE_ROOT; };
 		F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorHelper.swift; sourceTree = "<group>"; };
+		F127EC1C1BA33B2300782846 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
 		F181EE851B9F7859005DA9B2 /* The-Prolific-Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The-Prolific-Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F181EE881B9F7859005DA9B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F181EE8D1B9F7859005DA9B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		F127EC1B1BA33B0A00782846 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F127EC1C1BA33B2300782846 /* LibraryTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F181EE7C1B9F7859005DA9B2 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		F181EE871B9F7859005DA9B2 /* The-Prolific-Library */ = {
 			isa = PBXGroup;
 			children = (
+				F127EC1B1BA33B0A00782846 /* Views */,
 				F127EC0E1B9F848300782846 /* Helpers */,
 				F127EC0D1B9F847600782846 /* Models */,
 				F127EC0C1B9F846B00782846 /* ViewControllers */,
@@ -257,6 +268,7 @@
 				F127EC1A1BA1F63A00782846 /* ProgressIndicatorHelper.swift in Sources */,
 				F127EC181BA1268D00782846 /* Book.swift in Sources */,
 				F127EC141BA096A200782846 /* Errors_Alerts_Helper.swift in Sources */,
+				F127EC1D1BA33B2300782846 /* LibraryTableViewCell.swift in Sources */,
 				F127EC101BA0846D00782846 /* LibraryViewController.swift in Sources */,
 				F181EE891B9F7859005DA9B2 /* AppDelegate.swift in Sources */,
 				F127EC161BA1268200782846 /* Library.swift in Sources */,

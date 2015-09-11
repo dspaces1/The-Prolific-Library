@@ -23,7 +23,7 @@ class AddBookViewController: UIViewController {
     
     // MARK: Done Bar Button logic
     
-    ///If all textfields are empty dismiss ViewController. Otherwise warn the user.
+    ///If all textfields are empty dismiss ViewController. Otherwise warn the user
     @IBAction func checkIfUserIsDone(sender: AnyObject) {
         
         if areAllTextFieldsEmpty() {
@@ -44,7 +44,7 @@ class AddBookViewController: UIViewController {
         }
     }
     
-    ///Display a warning alert and dismiss ViewController if the user accepts warning message.
+    ///Display a warning alert and dismiss ViewController if the user accepts warning message
     func displayDoneAlert() {
         
         let alertView = UIAlertController(title: alertMessage.warningTitleMessage, message: alertMessage.areYouDoneTextBody, preferredStyle: UIAlertControllerStyle.Alert)
@@ -90,7 +90,7 @@ class AddBookViewController: UIViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
-    /// Grabs all fields and converts them into JSON. Then, takes JSON data and submits a POST request. Also, disable User UI and renables with a progress indicator.
+    /// Grabs all fields and converts them into JSON. Then, takes JSON data and submits a POST request. Also, disable User UI and renables with a progress indicator
     func sendBookInformationToServer() {
         
         let newBook = Book(bookTitle: bookTitleTextField.text!, authorName: authorNameTextField.text!, publisher: publisherNameTextField.text!, categories: categoriesTextField.text!)
