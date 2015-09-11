@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6ACA517D5FAB363C4A08E1CA"
+               BlueprintIdentifier = "3DE91B069604584327DE77D4"
                BuildableName = "Pods_The_Prolific_Library.framework"
                BlueprintName = "Pods-The-Prolific-Library"
                ReferencedContainer = "container:Pods.xcodeproj">

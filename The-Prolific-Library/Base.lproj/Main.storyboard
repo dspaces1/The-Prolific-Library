@@ -26,26 +26,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QIQ-nZ-2N4">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookCell" textLabel="FyN-Is-h67" detailTextLabel="Bie-Bn-O2O" style="IBUITableViewCellStyleSubtitle" id="KKd-ZV-byU" customClass="LibraryTableViewCell" customModule="The_Prolific_Library" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KKd-ZV-byU" id="PEe-X2-g79">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FyN-Is-h67">
+                                                    <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bie-Bn-O2O">
+                                                    <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="bookAuthorTitle" destination="Bie-Bn-O2O" id="gnQ-r3-Qc4"/>
+                                            <outlet property="bookTitle" destination="FyN-Is-h67" id="Xnv-nz-fGr"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="usn-Pb-i4w">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <animations/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QIQ-nZ-2N4" firstAttribute="top" secondItem="Epp-x9-pe8" secondAttribute="bottom" id="1nn-Ku-iTM"/>
                             <constraint firstItem="QIQ-nZ-2N4" firstAttribute="leading" secondItem="02L-nI-M7S" secondAttribute="leading" id="EyH-BN-w5g"/>
                             <constraint firstItem="QIQ-nZ-2N4" firstAttribute="top" secondItem="Epp-x9-pe8" secondAttribute="bottom" id="K3h-Jz-xbx"/>
-                            <constraint firstItem="usn-Pb-i4w" firstAttribute="top" secondItem="Epp-x9-pe8" secondAttribute="bottom" id="KxD-oA-83f"/>
-                            <constraint firstAttribute="trailing" secondItem="usn-Pb-i4w" secondAttribute="trailing" id="N9T-Ra-QVp"/>
-                            <constraint firstItem="usn-Pb-i4w" firstAttribute="leading" secondItem="02L-nI-M7S" secondAttribute="leading" id="jb6-h5-6PD"/>
                             <constraint firstAttribute="trailing" secondItem="QIQ-nZ-2N4" secondAttribute="trailing" id="krr-3k-ZPW"/>
-                            <constraint firstItem="QIQ-nZ-2N4" firstAttribute="top" secondItem="usn-Pb-i4w" secondAttribute="bottom" id="lm0-Rn-Pom"/>
                             <constraint firstItem="tJw-5b-Onz" firstAttribute="top" secondItem="QIQ-nZ-2N4" secondAttribute="bottom" id="tLO-FF-Wbx"/>
                         </constraints>
                         <variation key="default">
@@ -60,14 +86,20 @@
                                 <action selector="displayAddNewBookView:" destination="EzX-p0-lDn" id="hBs-Y0-tXT"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Mha-75-a6C">
+                            <connections>
+                                <action selector="deleteEntireLibrary:" destination="EzX-p0-lDn" id="4Rw-1b-GiH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="libraryTableView" destination="QIQ-nZ-2N4" id="8dG-UF-mtu"/>
                         <segue destination="e6y-0h-sjf" kind="show" identifier="ShowBook" id="J8Q-N7-LMY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQD-3m-ln3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="309"/>
+            <point key="canvasLocation" x="1077" y="309"/>
         </scene>
         <!--Add Book View Controller-->
         <scene sceneID="HZe-ov-FFV">
@@ -193,7 +225,7 @@
         <!--Detail-->
         <scene sceneID="RJL-AX-JMV">
             <objects>
-                <viewController id="e6y-0h-sjf" sceneMemberID="viewController">
+                <viewController id="e6y-0h-sjf" customClass="BookDetailsViewController" customModule="The_Prolific_Library" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p4s-cX-64c"/>
                         <viewControllerLayoutGuide type="bottom" id="z6a-Nf-DbD"/>

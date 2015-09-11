@@ -15,12 +15,15 @@ class alertMessage {
     static let couldNotConnectToServerMessage: String = "Could not connect to server. Please check network connection and try again."
     
     static let successTitle: String = "Success"
+    static let deletedEntireLibraryMessage: String = "Deleted entire library."
     
     static let missingBookOrAuthorFieldsMessage: String = "Book Title and Author are required fields"
     static let ok = "Ok"
     
     static let warningTitleMessage: String = "Warning"
     static let areYouDoneTextBody: String = "Any information you entered will not be saved. Are you sure you want to exit?"
+    static let deleteEntireLibraryWarning: String = "Are you sure you would like to delete the entire Library? If you do, all book information will be destroyed."
+    
     static let yesString: String = "Yes"
     static let noString: String = "No"
 }
