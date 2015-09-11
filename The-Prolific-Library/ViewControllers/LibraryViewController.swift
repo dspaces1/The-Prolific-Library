@@ -15,18 +15,17 @@ class LibraryViewController: UIViewController {
     
     @IBOutlet weak var libraryTableView: UITableView!
     
-    
     let library: Library = Library()
     var libraryBooks: [Book] = [] {
         didSet{
             libraryTableView.reloadData()
         }
     }
-    
+    var bookToSegue:Book!
+
     
     
     // MARK: - Instance Methods
-    
     
     /// Presents AddBookViewController
     @IBAction func displayAddNewBookView(sender: AnyObject) {
@@ -104,7 +103,8 @@ class LibraryViewController: UIViewController {
         
     }
     
-
+    // MARK: View Set Up Logic
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         disableUIandGetEntireLibrary()
@@ -121,15 +121,19 @@ class LibraryViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    
+    // MARK: Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+        if segue.identifier == "ShowBook" {
+            
+            let detailBookView: BookDetailsViewController = segue.destinationViewController as! BookDetailsViewController
+            detailBookView.book = bookToSegue
+        }
+        
     }
-    */
+
 
 }
 
@@ -154,9 +158,13 @@ extension LibraryViewController: UITableViewDataSource {
     }
 }
 
+
 // MARK: - UITableViewDelegate
 
 extension LibraryViewController: UITableViewDelegate {
+    
+    
+    // MARK: Delete Book Logic
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
@@ -168,17 +176,28 @@ extension LibraryViewController: UITableViewDelegate {
             
             let bookUrl: String = libraryBooks[indexPath.row].jsonDictionary["url"]!
             
+            // Delete Selected Book
             ProgressHelper.startLoadAnimationAndDisableUI(self)
             library.deleteBookWithURL(bookUrl, completionBlock: { (success) -> Void in
                 if success {
                     self.libraryBooks.removeAtIndex(indexPath.row)
                 } else {
-                    
+                    errorHandlingHelper.couldNotConnectToServerAlert(self, titleMessage: alertMessage.errorTitle, bodyMessage: alertMessage.couldNotConnectToServerMessage)
                 }
                 ProgressHelper.reEnableUI(self)
             })
             
         }
+    }
+    
+    
+    // MARK: Segue Book Data Logic 
+    
+    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let bookData = libraryBooks[indexPath.row]
+        bookToSegue = bookData
+        performSegueWithIdentifier("ShowBook", sender: nil)
     }
     
 }

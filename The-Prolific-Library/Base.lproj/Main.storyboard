@@ -225,7 +225,7 @@
         <!--Detail-->
         <scene sceneID="RJL-AX-JMV">
             <objects>
-                <viewController id="e6y-0h-sjf" sceneMemberID="viewController">
+                <viewController id="e6y-0h-sjf" customClass="BookDetailsViewController" customModule="The_Prolific_Library" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p4s-cX-64c"/>
                         <viewControllerLayoutGuide type="bottom" id="z6a-Nf-DbD"/>
