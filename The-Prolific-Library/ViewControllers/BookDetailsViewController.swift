@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class BookDetailsViewController: UIViewController {
 
@@ -31,6 +32,7 @@ class BookDetailsViewController: UIViewController {
         promptUserForName()
     }
     
+    /// Ask user for username to attach with checkout field
     func promptUserForName() {
         
         let alertView = UIAlertController(title: alertMessage.checkoutTitle, message: alertMessage.whoIsUser, preferredStyle: UIAlertControllerStyle.Alert)
@@ -56,7 +58,7 @@ class BookDetailsViewController: UIViewController {
         
     }
     
-    
+    /// Put request to the server with user
     func checkoutBookWithName(username: String) {
         
         if errorHandlingHelper.isStringEmpty(username) {
@@ -75,6 +77,7 @@ class BookDetailsViewController: UIViewController {
         
     }
     
+    /// Display a succesfully posted alert
     func displayAlertSuccessfulCheckout() {
         
         let alertView = UIAlertController(title: alertMessage.successTitle, message: alertMessage.bookCheckedOutMessage, preferredStyle: UIAlertControllerStyle.Alert)
@@ -86,6 +89,7 @@ class BookDetailsViewController: UIViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
+    /// Display an error that the user entered a blank username field
     func displayEmptyUsernameAlert () {
         
         let alertView = UIAlertController(title: alertMessage.warningTitleMessage, message: alertMessage.missingUsername, preferredStyle: UIAlertControllerStyle.Alert)
@@ -95,17 +99,61 @@ class BookDetailsViewController: UIViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
-    // MARK: Edit Current Book Logic
-    
-    @IBAction func editCurrentBookInformation(sender: AnyObject) {
-    }
-    
     
     // MARK: Share Book via FB and Twitter
     
     @IBAction func shareLink(sender: AnyObject) {
+        displayShareAlert()
     }
     
+    func displayShareAlert() {
+        let alertView = UIAlertController(title: alertMessage.shareContentTitle, message: alertMessage.shareContentMessage , preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.facebookTitle, style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            self.shareWithFacebook()
+        }))
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.twitterTitle, style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            self.shareWithTwitter()
+        }))
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.cancel, style: UIAlertActionStyle.Default, handler: nil))
+        
+        presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    /// Share book information with facebook
+    func shareWithFacebook() {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+            let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            facebookSheet.setInitialText(composeBookInformationToShare())
+            self.presentViewController(facebookSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: alertMessage.accountTitle, message: alertMessage.accountMessagefb, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
+    /// Share book information with twitter
+    func shareWithTwitter() {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+            let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            twitterSheet.setInitialText(composeBookInformationToShare())
+            self.presentViewController(twitterSheet, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: alertMessage.accountTitle, message: alertMessage.accountMessagetwitter, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    /// Put all book information into one message
+    func composeBookInformationToShare () -> String {
+        let shareMessage: String = "Check out this book from our library: \n\(titleLabel.text!)\n\(authorLabel.text!)\n\(publisherLabel.text!)\n\(categoryLabel.text!)\n\(checkedOutLabel.text!)"
+        return shareMessage
+    }
     
     // MARK: View Setup Logic
     
@@ -115,6 +163,7 @@ class BookDetailsViewController: UIViewController {
         setUpLabels()
     }
 
+    /// Grab all relevant JSON fields and display them in labels
     func setUpLabels () {
         
         titleLabel.text = book.jsonDictionary["title"]
@@ -131,6 +180,7 @@ class BookDetailsViewController: UIViewController {
    
     }
     
+    /// Format the date string
     func formatDateFromServer() -> String {
         
         let dateFormatter = NSDateFormatter()
@@ -143,6 +193,7 @@ class BookDetailsViewController: UIViewController {
         return newDateForm.stringFromDate(date)
     }
     
+    /// Check JSON data for a blank string to see if a user has checked out book
     func wasBookEverCheckedOut() -> Bool {
         
         if errorHandlingHelper.isStringEmpty(book.jsonDictionary["lastCheckedOutBy"]) && errorHandlingHelper.isStringEmpty(book.jsonDictionary["lastCheckedOut"]) {
@@ -162,11 +213,10 @@ class BookDetailsViewController: UIViewController {
             
             let bookEditView = segue.destinationViewController as! AddBookViewController
             bookEditView.bookToEditUrl = book.jsonDictionary["url"]
-            bookEditView.currentRequest = .PUT
+            bookEditView.currentRequest = .editBook
             bookEditView.bookToEditData = book
             
         }
     }
-    
 
 }

@@ -18,29 +18,31 @@ class AddBookViewController: UIViewController {
     @IBOutlet weak var categoriesTextField: UITextField!
     
 
-    enum submitRequest {
-        case POST
-        case PUT
+    enum controllerMode {
+        case addBook
+        case editBook
     }
     var bookToEditData:Book?
     var bookToEditUrl:String?
-    var currentRequest:submitRequest = .POST
+    var currentRequest:controllerMode = .addBook
     
     
     // MARK: - Instance Methods
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let book = bookToEditData {
-            
-            bookTitleTextField.text = book.jsonDictionary["title"]
-            authorNameTextField.text = book.jsonDictionary["author"]
-            publisherNameTextField.text = book.jsonDictionary["publisher"]
-            categoriesTextField.text = book.jsonDictionary["categories"]!
+            updateTextFields(book)
         }
+    }
+    
+    /// Update textfields if in editBook mode
+    func updateTextFields(book:Book) {
+        bookTitleTextField.text = book.jsonDictionary["title"]
+        authorNameTextField.text = book.jsonDictionary["author"]
+        publisherNameTextField.text = book.jsonDictionary["publisher"]
+        categoriesTextField.text = book.jsonDictionary["categories"]
     }
     
     // MARK: Done Bar Button logic
@@ -121,16 +123,16 @@ class AddBookViewController: UIViewController {
         
         switch currentRequest {
             
-        case .POST:
+        case .addBook:
             makePostRequestWithBook(newBook)
             
-        case .PUT:
+        case .editBook:
             makePutRequestWithBook(newBook)
 
         }
     }
     
-    
+    /// Check for non nil error from server request
     func wasServerCallSuccessful(isSuccessfulRequest: Bool) {
         
         if isSuccessfulRequest {
@@ -160,10 +162,10 @@ class AddBookViewController: UIViewController {
    
             switch self.currentRequest {
                 
-            case .POST:
+            case .addBook:
                 self.dismissViewControllerAnimated(true, completion: nil)
                 
-            case .PUT:
+            case .editBook:
                 self.navigationController?.popToRootViewControllerAnimated(true)
                 
             }
@@ -173,6 +175,7 @@ class AddBookViewController: UIViewController {
         presentViewController(alertView, animated: true, completion: nil)
     }
     
+    /// update book with new information
     func makePutRequestWithBook(newBook: Book) {
         
         if let bookUrl = bookToEditUrl {

@@ -15,11 +15,14 @@ typealias RestfulAllBooksCallBack = (Bool,[Book]) -> Void
 
 class Library {
     
+    // MARK: - Instance Properties
+    
     private let serverLibraryUrl: String = "https://prolific-interview.herokuapp.com/55eef7425c65c90009e68721"
     private let serverAllBooks: String = "/books"
     private let serverBook: String = "/books/"
     private let serverClearAllBooks: String = "/clean"
     
+    // MARK: - Instance Methods
     
     func getAllBooks(completionBlock: RestfulAllBooksCallBack) {
         
@@ -59,10 +62,6 @@ class Library {
                 completionBlock(false)
             }
         }
-    }
-    
-    func getBookWithUrl() {
-        
     }
     
     func deleteBookWithURL(selectedBookUrl: String,completionBlock: RestfulSuccessCallBack) {

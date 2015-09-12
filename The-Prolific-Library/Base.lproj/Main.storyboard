@@ -328,7 +328,6 @@
                                                     <color key="titleColor" red="0.99941431003680958" green="1" blue="0.95099697219110779" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="editCurrentBookInformation:" destination="e6y-0h-sjf" eventType="touchUpInside" id="STp-l5-qeI"/>
                                                     <segue destination="sCa-qy-ljg" kind="show" identifier="editBook" id="0OH-Bv-fae"/>
                                                 </connections>
                                             </button>

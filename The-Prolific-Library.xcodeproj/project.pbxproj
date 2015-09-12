@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9BBA28D14CF40CE10153B51F /* Pods_The_Prolific_Library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4154278C257CDB934FA76B3 /* Pods_The_Prolific_Library.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		F127EC0B1B9F7DE500782846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC0A1B9F7DE500782846 /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC101BA0846D00782846 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC0F1BA0846D00782846 /* LibraryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC121BA08DBF00782846 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC111BA08DBF00782846 /* AddBookViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC141BA096A200782846 /* Errors_Alerts_Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC131BA096A200782846 /* Errors_Alerts_Helper.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC161BA1268200782846 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC151BA1268200782846 /* Library.swift */; settings = {ASSET_TAGS = (); }; };
-		F127EC181BA1268D00782846 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC171BA1268D00782846 /* Book.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC1A1BA1F63A00782846 /* ProgressIndicatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC1D1BA33B2300782846 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC1C1BA33B2300782846 /* LibraryTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC221BA350C500782846 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC211BA350C500782846 /* BookDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -27,12 +25,10 @@
 		318FDBAB3C372232828C25EA /* Pods-The-Prolific-Library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The-Prolific-Library.release.xcconfig"; path = "Pods/Target Support Files/Pods-The-Prolific-Library/Pods-The-Prolific-Library.release.xcconfig"; sourceTree = "<group>"; };
 		7456C99E4CC2CFDE4279DFE8 /* Pods-The-Prolific-Library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The-Prolific-Library.debug.xcconfig"; path = "Pods/Target Support Files/Pods-The-Prolific-Library/Pods-The-Prolific-Library.debug.xcconfig"; sourceTree = "<group>"; };
 		D4154278C257CDB934FA76B3 /* Pods_The_Prolific_Library.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Prolific_Library.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F127EC0A1B9F7DE500782846 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F127EC0F1BA0846D00782846 /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		F127EC111BA08DBF00782846 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		F127EC131BA096A200782846 /* Errors_Alerts_Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors_Alerts_Helper.swift; sourceTree = "<group>"; };
 		F127EC151BA1268200782846 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "The-Prolific-Library/Helpers/Library.swift"; sourceTree = SOURCE_ROOT; };
-		F127EC171BA1268D00782846 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Book.swift; path = "The-Prolific-Library/Helpers/Book.swift"; sourceTree = SOURCE_ROOT; };
 		F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorHelper.swift; sourceTree = "<group>"; };
 		F127EC1C1BA33B2300782846 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
 		F127EC211BA350C500782846 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				F127EC151BA1268200782846 /* Library.swift */,
-				F127EC171BA1268D00782846 /* Book.swift */,
 			);
 			name = Models;
 			path = ViewControllers/Models;
@@ -140,7 +135,6 @@
 				F181EE8F1B9F7859005DA9B2 /* Assets.xcassets */,
 				F181EE911B9F7859005DA9B2 /* LaunchScreen.storyboard */,
 				F181EE941B9F7859005DA9B2 /* Info.plist */,
-				F127EC0A1B9F7DE500782846 /* ViewController.swift */,
 			);
 			path = "The-Prolific-Library";
 			sourceTree = "<group>";
@@ -266,11 +260,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F127EC0B1B9F7DE500782846 /* ViewController.swift in Sources */,
 				F127EC121BA08DBF00782846 /* AddBookViewController.swift in Sources */,
 				F127EC221BA350C500782846 /* BookDetailsViewController.swift in Sources */,
 				F127EC1A1BA1F63A00782846 /* ProgressIndicatorHelper.swift in Sources */,
-				F127EC181BA1268D00782846 /* Book.swift in Sources */,
 				F127EC141BA096A200782846 /* Errors_Alerts_Helper.swift in Sources */,
 				F127EC1D1BA33B2300782846 /* LibraryTableViewCell.swift in Sources */,
 				F127EC101BA0846D00782846 /* LibraryViewController.swift in Sources */,

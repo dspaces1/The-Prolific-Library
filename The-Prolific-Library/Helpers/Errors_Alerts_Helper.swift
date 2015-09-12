@@ -35,6 +35,14 @@ class alertMessage {
     static let sumbit: String = "Submit"
     static let cancel: String = "Cancel"
     
+    static let shareContentTitle: String = "Share"
+    static let shareContentMessage: String = "Would you like to share book with facebook or twitter?"
+    static let facebookTitle: String = "Facebook"
+    static let twitterTitle: String = "Twitter"
+    
+    static let accountTitle: String = "Account"
+    static let accountMessagefb: String = "Please log into your facebook account through settings."
+    static let accountMessagetwitter: String = "Please log into your twitter account through settings."
 
 }
 
@@ -44,6 +52,7 @@ class errorHandlingHelper {
 
     // MARK: Class Methods
     
+    /// Display a general error from server alert
     static func couldNotConnectToServerAlert (currentView: UIViewController, titleMessage: String, bodyMessage: String) {
         
         let alertView = UIAlertController(title: titleMessage, message: bodyMessage, preferredStyle: UIAlertControllerStyle.Alert)
@@ -53,6 +62,7 @@ class errorHandlingHelper {
         currentView.presentViewController(alertView, animated: true, completion: nil)
     }
     
+    /// Display a general error alert if something unexpected happens (e.q. unwrapping a nil)
     static func generalErrorAlert (currentView: UIViewController) {
         
         let alertView = UIAlertController(title: alertMessage.errorTitle, message: alertMessage.somethingWentWrongError, preferredStyle: UIAlertControllerStyle.Alert)
