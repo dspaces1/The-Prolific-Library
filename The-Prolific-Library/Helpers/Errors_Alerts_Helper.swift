@@ -17,6 +17,7 @@ class alertMessage {
     
     static let successTitle: String = "Success"
     static let deletedEntireLibraryMessage: String = "Deleted entire library."
+    static let bookCheckedOutMessage: String = "You have checked out this book. Please return it once you are done with it."
     
     static let missingBookOrAuthorFieldsMessage: String = "Book Title and Author are required fields"
     static let ok = "Ok"

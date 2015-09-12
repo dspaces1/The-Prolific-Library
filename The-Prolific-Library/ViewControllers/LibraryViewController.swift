@@ -150,8 +150,7 @@ extension LibraryViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:LibraryTableViewCell = tableView.dequeueReusableCellWithIdentifier("BookCell") as! LibraryTableViewCell
-        
-        print(libraryBooks[indexPath.row].jsonDictionary)
+
         cell.book = libraryBooks[indexPath.row]
         
         return cell

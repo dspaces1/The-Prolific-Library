@@ -62,15 +62,28 @@ class BookDetailsViewController: UIViewController {
         if errorHandlingHelper.isStringEmpty(username) {
             displayEmptyUsernameAlert()
         } else {
+            ProgressHelper.startLoadAnimationAndDisableUI(self)
             book.checkoutBook(username, completionBlock: { (success) -> Void in
                 if success {
-                    print("worked")
+                    self.displayAlertSuccessfulCheckout()
                 } else {
                     errorHandlingHelper.generalErrorAlert(self)
                 }
+                ProgressHelper.reEnableUI(self)
             })
         }
         
+    }
+    
+    func displayAlertSuccessfulCheckout() {
+        
+        let alertView = UIAlertController(title: alertMessage.successTitle, message: alertMessage.bookCheckedOutMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }))
+        
+        presentViewController(alertView, animated: true, completion: nil)
     }
     
     func displayEmptyUsernameAlert () {
@@ -125,7 +138,7 @@ class BookDetailsViewController: UIViewController {
         let date:NSDate = dateFormatter.dateFromString(book.jsonDictionary["lastCheckedOut"]!)!
         
         let newDateForm = NSDateFormatter()
-        newDateForm.dateFormat = "MMMM d, yyy h:ma"
+        newDateForm.dateFormat = "MMMM d, yyy h:mma"
         
         return newDateForm.stringFromDate(date)
     }
@@ -137,6 +150,21 @@ class BookDetailsViewController: UIViewController {
             return false
         } else {
             return true
+        }
+    }
+    
+    
+    // MARK: Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "editBook" {
+            
+            let bookEditView = segue.destinationViewController as! AddBookViewController
+            bookEditView.bookToEditUrl = book.jsonDictionary["url"]
+            bookEditView.currentRequest = .PUT
+            bookEditView.bookToEditData = book
+            
         }
     }
     

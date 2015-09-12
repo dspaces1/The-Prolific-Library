@@ -127,7 +127,16 @@ class Book: Library {
         }
     }
     
-    func editBookFromLibrary() {
+    func editBookFromLibrary(bookUrl: String, completionBlock: RestfulSuccessCallBack) {
+        Alamofire.request(.PUT, serverLibraryUrl+bookUrl, parameters: jsonDictionary, encoding: .JSON).response {
+            request, response, data, error in
+            
+            if error == nil {
+                completionBlock(true)
+            } else {
+                completionBlock(false)
+            }
+        }
         
     }
     

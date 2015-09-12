@@ -231,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUB-sf-UEd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="979"/>
+            <point key="canvasLocation" x="1311" y="1129"/>
         </scene>
         <!--Detail-->
         <scene sceneID="RJL-AX-JMV">
@@ -329,6 +329,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="editCurrentBookInformation:" destination="e6y-0h-sjf" eventType="touchUpInside" id="STp-l5-qeI"/>
+                                                    <segue destination="sCa-qy-ljg" kind="show" identifier="editBook" id="0OH-Bv-fae"/>
                                                 </connections>
                                             </button>
                                         </subviews>
