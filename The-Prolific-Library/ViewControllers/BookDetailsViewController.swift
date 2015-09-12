@@ -28,8 +28,59 @@ class BookDetailsViewController: UIViewController {
     // MARK: Checkout Book Logic
     
     @IBAction func checkoutCurrentBook(sender: AnyObject) {
+        promptUserForName()
     }
     
+    func promptUserForName() {
+        
+        let alertView = UIAlertController(title: alertMessage.checkoutTitle, message: alertMessage.whoIsUser, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        var usernameTextField:UITextField?
+        alertView.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            usernameTextField = textField
+        }
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.sumbit, style: UIAlertActionStyle.Default, handler: { (_) -> Void in
+            
+            if let username = usernameTextField!.text {
+                self.checkoutBookWithName(username)
+            } else {
+                errorHandlingHelper.generalErrorAlert(self)
+            }
+            
+        }))
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.cancel, style: UIAlertActionStyle.Default, handler: nil))
+        
+        presentViewController(alertView, animated: true, completion: nil)
+        
+    }
+    
+    
+    func checkoutBookWithName(username: String) {
+        
+        if errorHandlingHelper.isStringEmpty(username) {
+            displayEmptyUsernameAlert()
+        } else {
+            book.checkoutBook(username, completionBlock: { (success) -> Void in
+                if success {
+                    print("worked")
+                } else {
+                    errorHandlingHelper.generalErrorAlert(self)
+                }
+            })
+        }
+        
+    }
+    
+    func displayEmptyUsernameAlert () {
+        
+        let alertView = UIAlertController(title: alertMessage.warningTitleMessage, message: alertMessage.missingUsername, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: nil))
+        
+        presentViewController(alertView, animated: true, completion: nil)
+    }
     
     // MARK: Edit Current Book Logic
     
@@ -52,18 +103,31 @@ class BookDetailsViewController: UIViewController {
     }
 
     func setUpLabels () {
+        
         titleLabel.text = book.jsonDictionary["title"]
         authorLabel.text = book.jsonDictionary["author"]
         publisherLabel.text = "Publisher: " + book.jsonDictionary["publisher"]!
         categoryLabel.text =  "Tags: " + book.jsonDictionary["categories"]!
         
         if wasBookEverCheckedOut() {
-            checkedOutLabel.text = "Last Checked Out: " + book.jsonDictionary["lastCheckedOutBy"]! + "@" + book.jsonDictionary["lastCheckedOut"]!
+            
+            checkedOutLabel.text = "Last Checked Out: " + book.jsonDictionary["lastCheckedOutBy"]! + " @ " + formatDateFromServer()
         } else {
             checkedOutLabel.text = "Last Checked Out: Has not been checked out."
         }
+   
+    }
+    
+    func formatDateFromServer() -> String {
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date:NSDate = dateFormatter.dateFromString(book.jsonDictionary["lastCheckedOut"]!)!
         
+        let newDateForm = NSDateFormatter()
+        newDateForm.dateFormat = "MMMM d, yyy h:ma"
+        
+        return newDateForm.stringFromDate(date)
     }
     
     func wasBookEverCheckedOut() -> Bool {

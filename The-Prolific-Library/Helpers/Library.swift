@@ -86,6 +86,7 @@ class Book: Library {
     
     var jsonBookData:JSON!
     var jsonDictionary = [String:String]()
+    private var checkoutParameter = [String:String]()
     
     // MARK: - Instance Methods
     
@@ -129,4 +130,22 @@ class Book: Library {
     func editBookFromLibrary() {
         
     }
+    
+    
+    func checkoutBook(username: String, completionBlock: RestfulSuccessCallBack) {
+        checkoutParameter = ["lastCheckedOutBy" : username]
+        
+        Alamofire.request(.PUT, serverLibraryUrl+jsonDictionary["url"]!, parameters: checkoutParameter, encoding: .JSON).response {
+            request, response, data, error in
+            
+            if error == nil {
+                completionBlock(true)
+            } else {
+                completionBlock(false)
+            }
+            
+        }
+        
+    }
+    
 }

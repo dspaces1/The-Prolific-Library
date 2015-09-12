@@ -13,6 +13,7 @@ class alertMessage {
     
     static let errorTitle: String = "Error"
     static let couldNotConnectToServerMessage: String = "Could not connect to server. Please check network connection and try again."
+    static let somethingWentWrongError: String = "Something went wrong. Please try again or restart app."
     
     static let successTitle: String = "Success"
     static let deletedEntireLibraryMessage: String = "Deleted entire library."
@@ -23,9 +24,17 @@ class alertMessage {
     static let warningTitleMessage: String = "Warning"
     static let areYouDoneTextBody: String = "Any information you entered will not be saved. Are you sure you want to exit?"
     static let deleteEntireLibraryWarning: String = "Are you sure you would like to delete the entire Library? If you do, all book information will be destroyed."
+    static let missingUsername: String = "Cannot checkout book with empty name. Please try again."
     
     static let yesString: String = "Yes"
     static let noString: String = "No"
+    
+    static let checkoutTitle: String = "Checkout"
+    static let whoIsUser: String = "Please enter name to checkout book."
+    static let sumbit: String = "Submit"
+    static let cancel: String = "Cancel"
+    
+
 }
 
 
@@ -37,6 +46,15 @@ class errorHandlingHelper {
     static func couldNotConnectToServerAlert (currentView: UIViewController, titleMessage: String, bodyMessage: String) {
         
         let alertView = UIAlertController(title: titleMessage, message: bodyMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alertView.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: nil))
+        
+        currentView.presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    static func generalErrorAlert (currentView: UIViewController) {
+        
+        let alertView = UIAlertController(title: alertMessage.errorTitle, message: alertMessage.somethingWentWrongError, preferredStyle: UIAlertControllerStyle.Alert)
         
         alertView.addAction(UIAlertAction(title: alertMessage.ok, style: UIAlertActionStyle.Default, handler: nil))
         
