@@ -15,11 +15,14 @@ typealias RestfulAllBooksCallBack = (Bool,[Book]) -> Void
 
 class Library {
     
+    // MARK: - Instance Properties
+    
     private let serverLibraryUrl: String = "https://prolific-interview.herokuapp.com/55eef7425c65c90009e68721"
     private let serverAllBooks: String = "/books"
     private let serverBook: String = "/books/"
     private let serverClearAllBooks: String = "/clean"
     
+    // MARK: - Instance Methods
     
     func getAllBooks(completionBlock: RestfulAllBooksCallBack) {
         
@@ -61,10 +64,6 @@ class Library {
         }
     }
     
-    func getBookWithUrl() {
-        
-    }
-    
     func deleteBookWithURL(selectedBookUrl: String,completionBlock: RestfulSuccessCallBack) {
         
         Alamofire.request(.DELETE, serverLibraryUrl+selectedBookUrl).response{
@@ -86,6 +85,7 @@ class Book: Library {
     
     var jsonBookData:JSON!
     var jsonDictionary = [String:String]()
+    private var checkoutParameter = [String:String]()
     
     // MARK: - Instance Methods
     
@@ -126,7 +126,34 @@ class Book: Library {
         }
     }
     
-    func editBookFromLibrary() {
+    func editBookFromLibrary(bookUrl: String, completionBlock: RestfulSuccessCallBack) {
+        Alamofire.request(.PUT, serverLibraryUrl+bookUrl, parameters: jsonDictionary, encoding: .JSON).response {
+            request, response, data, error in
+            
+            if error == nil {
+                completionBlock(true)
+            } else {
+                completionBlock(false)
+            }
+        }
         
     }
+    
+    
+    func checkoutBook(username: String, completionBlock: RestfulSuccessCallBack) {
+        checkoutParameter = ["lastCheckedOutBy" : username]
+        
+        Alamofire.request(.PUT, serverLibraryUrl+jsonDictionary["url"]!, parameters: checkoutParameter, encoding: .JSON).response {
+            request, response, data, error in
+            
+            if error == nil {
+                completionBlock(true)
+            } else {
+                completionBlock(false)
+            }
+            
+        }
+        
+    }
+    
 }
