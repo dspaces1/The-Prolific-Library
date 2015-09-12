@@ -11,33 +11,70 @@ import UIKit
 class BookDetailsViewController: UIViewController {
 
     
-    // MARK: Instance Properties 
+    // MARK: - Instance Properties
     
     var book:Book!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var publisherLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var checkedOutLabel: UILabel!
+    
+    
+    // MARK: - Instance Methods
+    
+    
+    // MARK: Checkout Book Logic
+    
+    @IBAction func checkoutCurrentBook(sender: AnyObject) {
+    }
+    
+    
+    // MARK: Edit Current Book Logic
+    
+    @IBAction func editCurrentBookInformation(sender: AnyObject) {
+    }
+    
+    
+    // MARK: Share Book via FB and Twitter
+    
+    @IBAction func shareLink(sender: AnyObject) {
+    }
+    
+    
+    // MARK: View Setup Logic
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(book.jsonDictionary)
-        
-        // Do any additional setup after loading the view.
+        setUpLabels()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setUpLabels () {
+        titleLabel.text = book.jsonDictionary["title"]
+        authorLabel.text = book.jsonDictionary["author"]
+        publisherLabel.text = "Publisher: " + book.jsonDictionary["publisher"]!
+        categoryLabel.text =  "Tags: " + book.jsonDictionary["categories"]!
+        
+        if wasBookEverCheckedOut() {
+            checkedOutLabel.text = "Last Checked Out: " + book.jsonDictionary["lastCheckedOutBy"]! + "@" + book.jsonDictionary["lastCheckedOut"]!
+        } else {
+            checkedOutLabel.text = "Last Checked Out: Has not been checked out."
+        }
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func wasBookEverCheckedOut() -> Bool {
+        
+        if errorHandlingHelper.isStringEmpty(book.jsonDictionary["lastCheckedOutBy"]) && errorHandlingHelper.isStringEmpty(book.jsonDictionary["lastCheckedOut"]) {
+            
+            return false
+        } else {
+            return true
+        }
     }
-    */
+    
 
 }

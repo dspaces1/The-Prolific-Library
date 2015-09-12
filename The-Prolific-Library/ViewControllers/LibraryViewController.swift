@@ -103,7 +103,7 @@ class LibraryViewController: UIViewController {
         
     }
     
-    // MARK: View Set Up Logic
+    // MARK: View Setup Logic
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -193,7 +193,9 @@ extension LibraryViewController: UITableViewDelegate {
     
     // MARK: Segue Book Data Logic 
     
-    func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let bookData = libraryBooks[indexPath.row]
         bookToSegue = bookData
