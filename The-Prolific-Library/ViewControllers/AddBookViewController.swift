@@ -39,10 +39,10 @@ class AddBookViewController: UIViewController {
     
     /// Update textfields if in editBook mode
     func updateTextFields(book:Book) {
-        bookTitleTextField.text = book.jsonDictionary["title"]
-        authorNameTextField.text = book.jsonDictionary["author"]
-        publisherNameTextField.text = book.jsonDictionary["publisher"]
-        categoriesTextField.text = book.jsonDictionary["categories"]
+        bookTitleTextField.text = book.bookName
+        authorNameTextField.text = book.authorName
+        publisherNameTextField.text = book.publisherName
+        categoriesTextField.text = book.categoryNames
     }
     
     // MARK: Done Bar Button logic
@@ -119,7 +119,7 @@ class AddBookViewController: UIViewController {
         
         let newBook = Book(bookTitle: bookTitleTextField.text!, authorName: authorNameTextField.text!, publisher: publisherNameTextField.text!, categories: categoriesTextField.text!)
         
-        ProgressHelper.startLoadAnimationAndDisableUI(self)
+        ProgressHelper.enableUI(false, currentView: self)
         
         switch currentRequest {
             
@@ -147,7 +147,7 @@ class AddBookViewController: UIViewController {
         
         newBook.addBookToLibrary { (success) -> Void in
             self.wasServerCallSuccessful(success)
-            ProgressHelper.reEnableUI(self)
+            ProgressHelper.enableUI(true, currentView: self)
         }
     }
     
@@ -182,7 +182,7 @@ class AddBookViewController: UIViewController {
 
             newBook.editBookFromLibrary(bookUrl, completionBlock: { (success) -> Void in
                 self.wasServerCallSuccessful(success)
-                ProgressHelper.reEnableUI(self)
+                ProgressHelper.enableUI(true, currentView: self)
             })
         } else {
             errorHandlingHelper.generalErrorAlert(self)

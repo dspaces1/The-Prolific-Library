@@ -84,8 +84,27 @@ class Book: Library {
     // MARK: - Instance Properties
     
     var jsonBookData:JSON!
-    var jsonDictionary = [String:String]()
+    var jsonDictionary = [String:String]() {
+        didSet{
+            bookName = jsonDictionary["title"] ?? ""
+            authorName = jsonDictionary["author"] ?? ""
+            categoryNames = jsonDictionary["categories"] ?? ""
+            publisherName = jsonDictionary["publisher"] ?? ""
+            checkoutPersonsName = jsonDictionary["lastCheckedOutBy"] ?? ""
+            checkoutTime = jsonDictionary["lastCheckedOut"] ?? ""
+            bookUrl = jsonDictionary["url"] ?? ""
+            
+        }
+    }
     private var checkoutParameter = [String:String]()
+    
+    var bookName: String!
+    var authorName: String!
+    var categoryNames: String!
+    var publisherName: String!
+    var checkoutPersonsName: String!
+    var checkoutTime: String!
+    var bookUrl: String!
     
     // MARK: - Instance Methods
     
@@ -143,7 +162,7 @@ class Book: Library {
     func checkoutBook(username: String, completionBlock: RestfulSuccessCallBack) {
         checkoutParameter = ["lastCheckedOutBy" : username]
         
-        Alamofire.request(.PUT, serverLibraryUrl+jsonDictionary["url"]!, parameters: checkoutParameter, encoding: .JSON).response {
+        Alamofire.request(.PUT, serverLibraryUrl+bookUrl, parameters: checkoutParameter, encoding: .JSON).response {
             request, response, data, error in
             
             if error == nil {
@@ -154,6 +173,19 @@ class Book: Library {
             
         }
         
+    }
+    
+    /// Format the date string
+    func formatDateFromServer() -> String {
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date:NSDate = dateFormatter.dateFromString(checkoutTime)!
+        
+        let newDateForm = NSDateFormatter()
+        newDateForm.dateFormat = "MMMM d, yyy h:mma"
+        
+        return newDateForm.stringFromDate(date)
     }
     
 }

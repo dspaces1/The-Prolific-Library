@@ -12,7 +12,7 @@ import MBProgressHUD
 class ProgressHelper {
     
     ///Disable current view and navigation view ui interactions. Starts loading animation.
-    static func startLoadAnimationAndDisableUI (currentView:UIViewController) {
+    private static func startLoadAnimationAndDisableUI (currentView:UIViewController) {
         
         currentView.view.userInteractionEnabled = false
         
@@ -25,7 +25,7 @@ class ProgressHelper {
     }
     
     ///Enable current view and navigation view ui interactions. Stops loading animation.
-    static func reEnableUI(currentView:UIViewController) {
+    private static func reEnableUI(currentView:UIViewController) {
         
         MBProgressHUD.hideAllHUDsForView(currentView.view, animated: true)
         
@@ -33,6 +33,15 @@ class ProgressHelper {
         
         if let navigationBar = currentView.navigationController {
             navigationBar.view.userInteractionEnabled = true
+        }
+    }
+    
+    static func enableUI(flag: Bool, currentView:UIViewController) {
+        
+        if flag {
+            reEnableUI(currentView)
+        } else{
+            startLoadAnimationAndDisableUI(currentView)
         }
     }
     

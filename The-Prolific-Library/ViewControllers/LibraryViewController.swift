@@ -16,13 +16,14 @@ class LibraryViewController: UIViewController {
     @IBOutlet weak var libraryTableView: UITableView!
     
     let library: Library = Library()
+    
     var libraryBooks: [Book] = [] {
         didSet{
             libraryTableView.reloadData()
         }
     }
     var bookToSegue:Book!
-
+    var refreshControl:UIRefreshControl!
     
     
     // MARK: - Instance Methods
@@ -59,7 +60,7 @@ class LibraryViewController: UIViewController {
     /// Delete entire library from server
     func disableUIandDeleteLibrary() {
         
-        ProgressHelper.startLoadAnimationAndDisableUI(self)
+        ProgressHelper.enableUI(false, currentView: self)
         
         library.deleteAllBooks { (success) -> Void in
             if success {
@@ -68,7 +69,7 @@ class LibraryViewController: UIViewController {
             }else{
                 errorHandlingHelper.couldNotConnectToServerAlert(self, titleMessage: alertMessage.errorTitle, bodyMessage: alertMessage.couldNotConnectToServerMessage)
             }
-            ProgressHelper.reEnableUI(self)
+            ProgressHelper.enableUI(true, currentView: self)
         }
         
     }
@@ -89,7 +90,7 @@ class LibraryViewController: UIViewController {
     /// Get entire library from server
     func disableUIandGetEntireLibrary() {
         
-        ProgressHelper.startLoadAnimationAndDisableUI(self)
+        ProgressHelper.enableUI(false, currentView: self)
         
         library.getAllBooks { (success, books) -> Void in
             
@@ -98,7 +99,8 @@ class LibraryViewController: UIViewController {
             } else {
                 errorHandlingHelper.couldNotConnectToServerAlert(self, titleMessage: alertMessage.errorTitle, bodyMessage: alertMessage.couldNotConnectToServerMessage)
             }
-            ProgressHelper.reEnableUI(self)
+            ProgressHelper.enableUI(true, currentView: self)
+            self.refreshControl.endRefreshing()
         }
         
     }
@@ -118,6 +120,14 @@ class LibraryViewController: UIViewController {
     func viewSetUp() {
         libraryTableView.delegate = self
         libraryTableView.dataSource = self
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        libraryTableView.addSubview(refreshControl)
+    }
+    
+    func refresh() {
+        disableUIandGetEntireLibrary()
     }
     
 
@@ -173,17 +183,17 @@ extension LibraryViewController: UITableViewDelegate {
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
-            let bookUrl: String = libraryBooks[indexPath.row].jsonDictionary["url"]!
+            let bookUrl: String = libraryBooks[indexPath.row].bookUrl
             
             // Delete Selected Book
-            ProgressHelper.startLoadAnimationAndDisableUI(self)
+            ProgressHelper.enableUI(false, currentView: self)
             library.deleteBookWithURL(bookUrl, completionBlock: { (success) -> Void in
                 if success {
                     self.libraryBooks.removeAtIndex(indexPath.row)
                 } else {
                     errorHandlingHelper.couldNotConnectToServerAlert(self, titleMessage: alertMessage.errorTitle, bodyMessage: alertMessage.couldNotConnectToServerMessage)
                 }
-                ProgressHelper.reEnableUI(self)
+                ProgressHelper.enableUI(true, currentView: self)
             })
             
         }

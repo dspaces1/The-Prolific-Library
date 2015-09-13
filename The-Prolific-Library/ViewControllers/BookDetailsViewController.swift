@@ -64,14 +64,14 @@ class BookDetailsViewController: UIViewController {
         if errorHandlingHelper.isStringEmpty(username) {
             displayEmptyUsernameAlert()
         } else {
-            ProgressHelper.startLoadAnimationAndDisableUI(self)
+            ProgressHelper.enableUI(false, currentView: self)
             book.checkoutBook(username, completionBlock: { (success) -> Void in
                 if success {
                     self.displayAlertSuccessfulCheckout()
                 } else {
-                    errorHandlingHelper.generalErrorAlert(self)
+                    errorHandlingHelper.couldNotConnectToServerAlert(self, titleMessage: alertMessage.errorTitle, bodyMessage: alertMessage.couldNotConnectToServerMessage)
                 }
-                ProgressHelper.reEnableUI(self)
+                ProgressHelper.enableUI(true, currentView: self)
             })
         }
         
@@ -166,37 +166,26 @@ class BookDetailsViewController: UIViewController {
     /// Grab all relevant JSON fields and display them in labels
     func setUpLabels () {
         
-        titleLabel.text = book.jsonDictionary["title"]
-        authorLabel.text = book.jsonDictionary["author"]
-        publisherLabel.text = "Publisher: " + book.jsonDictionary["publisher"]!
-        categoryLabel.text =  "Tags: " + book.jsonDictionary["categories"]!
+        titleLabel.text = book.bookName
+        authorLabel.text = book.authorName
+        publisherLabel.text = "Publisher: " + book.publisherName
+        categoryLabel.text =  "Tags: " + book.categoryNames
         
         if wasBookEverCheckedOut() {
             
-            checkedOutLabel.text = "Last Checked Out: " + book.jsonDictionary["lastCheckedOutBy"]! + " @ " + formatDateFromServer()
+            checkedOutLabel.text = "Last Checked Out: " + book.checkoutPersonsName + " @ " + book.formatDateFromServer()
         } else {
             checkedOutLabel.text = "Last Checked Out: Has not been checked out."
         }
    
     }
     
-    /// Format the date string
-    func formatDateFromServer() -> String {
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let date:NSDate = dateFormatter.dateFromString(book.jsonDictionary["lastCheckedOut"]!)!
-        
-        let newDateForm = NSDateFormatter()
-        newDateForm.dateFormat = "MMMM d, yyy h:mma"
-        
-        return newDateForm.stringFromDate(date)
-    }
+    
     
     /// Check JSON data for a blank string to see if a user has checked out book
     func wasBookEverCheckedOut() -> Bool {
         
-        if errorHandlingHelper.isStringEmpty(book.jsonDictionary["lastCheckedOutBy"]) && errorHandlingHelper.isStringEmpty(book.jsonDictionary["lastCheckedOut"]) {
+        if errorHandlingHelper.isStringEmpty(book.checkoutPersonsName) && errorHandlingHelper.isStringEmpty(book.checkoutTime) {
             
             return false
         } else {
@@ -212,7 +201,7 @@ class BookDetailsViewController: UIViewController {
         if segue.identifier == "editBook" {
             
             let bookEditView = segue.destinationViewController as! AddBookViewController
-            bookEditView.bookToEditUrl = book.jsonDictionary["url"]
+            bookEditView.bookToEditUrl = book.bookUrl
             bookEditView.currentRequest = .editBook
             bookEditView.bookToEditData = book
             

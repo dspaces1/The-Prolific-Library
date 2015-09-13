@@ -11,7 +11,7 @@
 		F127EC101BA0846D00782846 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC0F1BA0846D00782846 /* LibraryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC121BA08DBF00782846 /* AddBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC111BA08DBF00782846 /* AddBookViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC141BA096A200782846 /* Errors_Alerts_Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC131BA096A200782846 /* Errors_Alerts_Helper.swift */; settings = {ASSET_TAGS = (); }; };
-		F127EC161BA1268200782846 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC151BA1268200782846 /* Library.swift */; settings = {ASSET_TAGS = (); }; };
+		F127EC161BA1268200782846 /* LibraryAndBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC151BA1268200782846 /* LibraryAndBook.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC1A1BA1F63A00782846 /* ProgressIndicatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC1D1BA33B2300782846 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC1C1BA33B2300782846 /* LibraryTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		F127EC221BA350C500782846 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F127EC211BA350C500782846 /* BookDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -28,7 +28,7 @@
 		F127EC0F1BA0846D00782846 /* LibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		F127EC111BA08DBF00782846 /* AddBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBookViewController.swift; sourceTree = "<group>"; };
 		F127EC131BA096A200782846 /* Errors_Alerts_Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors_Alerts_Helper.swift; sourceTree = "<group>"; };
-		F127EC151BA1268200782846 /* Library.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Library.swift; path = "The-Prolific-Library/Helpers/Library.swift"; sourceTree = SOURCE_ROOT; };
+		F127EC151BA1268200782846 /* LibraryAndBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LibraryAndBook.swift; path = "The-Prolific-Library/Helpers/LibraryAndBook.swift"; sourceTree = SOURCE_ROOT; };
 		F127EC191BA1F63A00782846 /* ProgressIndicatorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicatorHelper.swift; sourceTree = "<group>"; };
 		F127EC1C1BA33B2300782846 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
 		F127EC211BA350C500782846 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		F127EC0D1B9F847600782846 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F127EC151BA1268200782846 /* Library.swift */,
+				F127EC151BA1268200782846 /* LibraryAndBook.swift */,
 			);
 			name = Models;
 			path = ViewControllers/Models;
@@ -267,7 +267,7 @@
 				F127EC1D1BA33B2300782846 /* LibraryTableViewCell.swift in Sources */,
 				F127EC101BA0846D00782846 /* LibraryViewController.swift in Sources */,
 				F181EE891B9F7859005DA9B2 /* AppDelegate.swift in Sources */,
-				F127EC161BA1268200782846 /* Library.swift in Sources */,
+				F127EC161BA1268200782846 /* LibraryAndBook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

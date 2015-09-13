@@ -17,8 +17,8 @@ class LibraryTableViewCell: UITableViewCell {
     var book: Book? {
         didSet {
             if let book = book {
-                self.bookTitle.text = book.jsonDictionary["title"]
-                self.bookAuthorTitle.text = book.jsonDictionary["author"]
+                self.bookTitle.text = book.bookName
+                self.bookAuthorTitle.text = book.authorName
             }
         }
     }
