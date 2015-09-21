@@ -2,9 +2,12 @@
 The SWAG committee's personal library book tracking app.
 
 ### App Images ###
-![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/LandingScreen.png?token=AD4GsrifLPiILTKVxlMtOAaJdUK-0mUUks5V_wJvwA%3D%3D) ![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/BookDetails.png?token=AD4Gsp7UoiXsZ8pxeK72hfHSmeit71k4ks5V_wLBwA%3D%3D) ![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/AddBook.png?token=AD4Gsn4XWQDCVaEaQKXjUC_MD-3FjOZ3ks5V_wMJwA%3D%3D) ![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/DeleteBook.png?token=AD4GslB2sMuly6UYg1LYr_1_1rIGlQ8Eks5V_xFLwA%3D%3D)
-![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/PullToRefresh.png?token=AD4Gsv4LqcmV0uXObSWF3f5LcS2S5O3Hks5V_xnlwA%3D%3D)
-![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/WarningMessage.png?token=AD4GsgCAeFcvuD6hycq1U2DQISH3VixLks5V_xn5wA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/LandingScreen.png?token=AD4GsujR8N44nf6tzY0OECwCIgQH2iWNks5WCYgnwA%3D%3D) 
+![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/BookDetails.png?token=AD4Gsvzo6fIFk8kmDhsBelizB6vjIcEJks5WCYhwwA%3D%3D) 
+![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/AddBook.png?token=AD4GsgktpSLnwITJH0tFd_eZUTYrFeNPks5WCYiQwA%3D%3D) 
+![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/DeleteBook.png?token=AD4GsnTPipEvnPZUbfkU7zqPvAq-7cjrks5WCYitwA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/PullToRefresh.png?token=AD4GsoYPQCcqoqOefyNz8cmyL6QKxYDCks5WCYjMwA%3D%3D)
+![alt tag](https://raw.githubusercontent.com/dspaces1/The-Prolific-Library/master/App%20Screenshots/WarningMessage.png?token=AD4Gsg4aO0DF6O4QYgFcW8j-RKcyAU9Sks5WCYkAwA%3D%3D)
 
 ### Git Workflow ###
 1. Created Master repo with Github
